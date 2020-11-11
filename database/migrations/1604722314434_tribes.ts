@@ -7,8 +7,13 @@ export default class Tribes extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.string('name').unique().notNullable()
-      table.integer('bank_id').unsigned().notNullable()
-      table.foreign('bank_id').references('id').inTable('banks')
+      table
+        .integer('bank_id')
+        .unsigned()
+        .references('id')
+        .inTable('banks')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE')
       table.timestamps(true, true)
     })
   }

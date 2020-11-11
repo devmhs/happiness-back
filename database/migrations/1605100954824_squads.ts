@@ -7,8 +7,13 @@ export default class Squads extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.string('name').unique().notNullable()
-      table.integer('tribe_id').unsigned().notNullable()
-      table.foreign('tribe_id').references('id').inTable('tribes')
+      table
+        .integer('tribe_id')
+        .unsigned()
+        .references('id')
+        .inTable('tribes')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE')
       table.timestamps(true, true)
     })
   }
