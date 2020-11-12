@@ -101,7 +101,10 @@ export default class UsersController {
     }
 
     if (data.username) {
-      const unavailableUsername = await User.query().where('username', data.username).first()
+      const unavailableUsername = await User.query()
+        .where('username', data.username)
+        .whereNot('id', id)
+        .first()
 
       if (unavailableUsername) {
         return response.badRequest({
@@ -132,6 +135,6 @@ export default class UsersController {
 
     await user.delete()
 
-    return user
+    return response.noContent()
   }
 }

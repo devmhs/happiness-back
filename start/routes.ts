@@ -25,4 +25,7 @@ Route.post('login', 'LoginController.store')
 Route.group(() => {
   Route.get('/profiles', 'ProfilesController.index')
   Route.resource('users', 'UsersController').apiOnly()
+  Route.resource('banks', 'BanksController').apiOnly()
+  Route.resource('banks.tribes', 'TribesController').apiOnly()
+  Route.resource('tribes.squads', 'SquadsController').apiOnly()
 }).middleware('auth')
