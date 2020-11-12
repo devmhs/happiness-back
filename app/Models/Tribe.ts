@@ -1,7 +1,9 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, belongsTo, BelongsTo, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
 
 import Bank from '../Models/Bank'
+import Squad from '../Models/Squad'
+import User from '../Models/User'
 
 export default class Tribe extends BaseModel {
   @column({ isPrimary: true })
@@ -17,6 +19,16 @@ export default class Tribe extends BaseModel {
 
   @column()
   public bank_id: number
+
+  @hasMany(() => Squad, {
+    foreignKey: 'tribe_id',
+  })
+  public squads: HasMany<typeof Squad>
+
+  @hasMany(() => User, {
+    foreignKey: 'tribe_id',
+  })
+  public users: HasMany<typeof User>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

@@ -9,6 +9,7 @@
         "selector": "variable",
         "format": ["camelCase", "UPPER_CASE", "snake_case"]
       }
-    ]
+    ],
+    "eqeqeq": "off"
   }
 }

@@ -10,6 +10,7 @@ export default class UserSeeder extends BaseSeeder {
         username: 'adm.mhs',
         password: 'mhs.adm',
         profile_id: 3,
+        is_deleted: false,
       },
     ])
   }
